@@ -9,7 +9,7 @@ function App() {
           GitHub Codespaces <span className="heart">♥️</span> React
         </p>
         <p className="small">
-        Kerry Woodall
+        Kerry Woodall 03/15/2024
         </p>
   
       </header>
