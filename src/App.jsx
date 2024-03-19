@@ -1,4 +1,7 @@
 import './App.css';
+import ComponentA from './ComponentA.jsx';
+import ComponentB from './ComponentB.jsx';
+
 
 function App() {
   return (
@@ -11,8 +14,10 @@ function App() {
         <p className="small">
         Kerry Woodall  Friday 03/15/2024
         </p>
-  
+        <ComponentA />
+      <ComponentB />
       </header>
+ 
     </div>
   );
 }
