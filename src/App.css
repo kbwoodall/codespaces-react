@@ -7,8 +7,10 @@
   pointer-events: none;
 }
 
+
+
 .App-header {
-  background-color: #2a2834;
+  background-color: gray;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,5 +30,6 @@
 
 .small {
   font-size: 0.75rem;
-  background-color: #2a2834;
+
+  background-color: gray;
 }
