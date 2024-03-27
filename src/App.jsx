@@ -1,8 +1,18 @@
 import './App.css';
 import ComponentA from './ComponentA.jsx';
 import ComponentB from './ComponentB.jsx';
+import ChainRuleExample from './ChainRuleExample.jsx';
+import React, { useState } from 'react';
 
+function CurrentDate() {
+  const [date, setDate] = useState(new Date());
 
+  return (
+    <div>
+      <h1>Current Date: {date.toDateString()}</h1>
+    </div>
+  );
+}
 function App() {
   return (
     <div className="App">
@@ -12,12 +22,14 @@ function App() {
           GitHub Codespaces <span className="heart">♥️</span> React
         </p>
         <p className="small">
-        Kerry Woodall  Friday 03/15/2024
+          Kerry Woodall  <CurrentDate/>
         </p>
+      
+        <ChainRuleExample/>
         <ComponentA />
-      <ComponentB />
+        <ComponentB />
       </header>
- 
+
     </div>
   );
 }
