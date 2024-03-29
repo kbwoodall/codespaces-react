@@ -4,12 +4,7 @@ import ComponentB from './ComponentB.jsx';
 import ChainRuleExample from './ChainRuleExample.jsx';
 import React, { useState } from 'react';
 import IntegralGraph from './IntegralGraph';
-
 import DerivativeGraph from './DerivativeGraph';
-
-// Define your original and derivative functions
-const originalFunction = x => Math.sin(x); // Example: sine function
-const derivativeFunction = x => Math.cos(x); // Example: derivative of sine function
 
 function CurrentDate() {
   const [date, setDate] = useState(new Date());
@@ -26,6 +21,8 @@ function App() {
   return (
 
     <div className="App" >
+
+
       <header className="App-header">
         <img src="Octocat.png" className="App-logo" alt="logo" />
         <p>
@@ -35,16 +32,24 @@ function App() {
           Kerry Woodall  <CurrentDate />
         </p>
 
-
         <ChainRuleExample />
         <IntegralGraph />
-        <ComponentA />
-        <ComponentB />
+
+
       </header>
 
+
     </div>
+
   );
 }
 
 export default App;
-// <Graph data={graphData} />
+
+/*
+    <ChainRuleExample />
+        <IntegralGraph />
+        <ComponentA />
+        <ComponentB />
+
+*/
