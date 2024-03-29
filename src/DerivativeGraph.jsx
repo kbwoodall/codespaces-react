@@ -1,54 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
-class DerivativeGraph extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // Default function: f(x) = x^2
-      expression: 'x^2',
-      minX: -10,
-      maxX: 10,
-      numPoints: 100,
-    };
-  }
+const DerivativeGraph = () => {
+  const [inputValue, setInputValue] = useState(0); // State to hold input value
 
-  calculateDerivative = (x) => {
-    // Calculate derivative of the function here
-    // For simplicity, let's say the derivative of x^2 is 2x
-    return 2 * x;
+  // Function to calculate the derivative
+  const calculateDerivative = (x) => {
+    // For f(x) = 3x, the derivative is always 3
+    return 3;
   };
 
-  generateData = () => {
-    const { minX, maxX, numPoints } = this.state;
-    const step = (maxX - minX) / numPoints;
-    let data = [];
-    for (let x = minX; x <= maxX; x += step) {
-      data.push({ x, y: this.calculateDerivative(x) });
+  // Function to generate data for the derivative graph
+  const generateGraphData = () => {
+    const data = [];
+    for (let x = -10; x <= 10; x += 0.1) {
+      const y = calculateDerivative(x);
+      data.push({ x, y });
     }
     return data;
   };
 
-  render() {
-    const data = {
-      datasets: [
-        {
-          label: 'Derivative',
-          data: this.generateData(),
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1,
-        },
-      ],
-    };
+  // Event handler for input change
+  const handleInputChange = (e) => {
+    const value = parseFloat(e.target.value);
+    setInputValue(value);
+  };
 
-    return (
-      <div>
-        <h2>Graph of Derivative</h2>
-        <Line data={data} />
-      </div>
-    );
-  }
-}
+  // Generate data for the derivative graph
+  const data = {
+    datasets: [{
+      label: 'f\'(x) = 3',
+      data: generateGraphData(),
+      borderColor: 'blue',
+      borderWidth: 2,
+      pointRadius: 0,
+      fill: false
+    }]
+  };
+
+  // Chart options
+  const options = {
+    scales: {
+      xAxes: [{
+        type: 'linear',
+        position: 'bottom'
+      }],
+      yAxes: [{
+        type: 'linear',
+        position: 'left'
+      }]
+    }
+  };
+
+  return (
+    <div>
+      <h2>Graph of the Derivative Function</h2>
+      <label>
+        Enter value for x:
+        <input type="number" value={inputValue} onChange={handleInputChange} />
+      </label>
+      <Line data={data} options={options} />
+    </div>
+  );
+};
 
 export default DerivativeGraph;

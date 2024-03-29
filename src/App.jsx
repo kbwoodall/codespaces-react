@@ -32,6 +32,8 @@ function App() {
           Kerry Woodall  <CurrentDate />
         </p>
 
+
+
         <ChainRuleExample />
         <IntegralGraph />
 
