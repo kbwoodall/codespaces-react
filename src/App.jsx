@@ -3,6 +3,7 @@ import ComponentA from './ComponentA.jsx';
 import ComponentB from './ComponentB.jsx';
 import ChainRuleExample from './ChainRuleExample.jsx';
 import React, { useState } from 'react';
+import IntegralGraph from './IntegralGraph.jsx';
 
 function CurrentDate() {
   const [date, setDate] = useState(new Date());
@@ -26,6 +27,8 @@ function App() {
         </p>
       
         <ChainRuleExample/>
+        <IntegralGraph/>
+
         <ComponentA />
         <ComponentB />
       </header>
