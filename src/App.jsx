@@ -3,8 +3,13 @@ import ComponentA from './ComponentA.jsx';
 import ComponentB from './ComponentB.jsx';
 import ChainRuleExample from './ChainRuleExample.jsx';
 import React, { useState } from 'react';
-import IntegralGraph from './IntegralGraph.jsx';
-import Graph from './Graph.jsx';
+import IntegralGraph from './IntegralGraph';
+
+import DerivativeGraph from './DerivativeGraph';
+
+// Define your original and derivative functions
+const originalFunction = x => Math.sin(x); // Example: sine function
+const derivativeFunction = x => Math.cos(x); // Example: derivative of sine function
 
 function CurrentDate() {
   const [date, setDate] = useState(new Date());
@@ -17,10 +22,6 @@ function CurrentDate() {
 }
 function App() {
 
-  const graphData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    values: [65, 59, 80, 81, 56, 55, 40]
-  };
 
   return (
 
@@ -34,9 +35,9 @@ function App() {
           Kerry Woodall  <CurrentDate />
         </p>
 
+
         <ChainRuleExample />
         <IntegralGraph />
-
         <ComponentA />
         <ComponentB />
       </header>
