@@ -5,6 +5,9 @@ import ChainRuleExample from './ChainRuleExample.jsx';
 import React, { useState } from 'react';
 import IntegralGraph from './IntegralGraph';
 import DerivativeGraph from './DerivativeGraph';
+import LinearGraph from './ LinearGraph';
+
+
 
 function CurrentDate() {
   const [date, setDate] = useState(new Date());
@@ -16,7 +19,7 @@ function CurrentDate() {
   );
 }
 function App() {
-
+  const data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 300];
 
   return (
 
@@ -32,7 +35,8 @@ function App() {
           Kerry Woodall  <CurrentDate />
         </p>
 
-
+        <p>Linear Graph Example</p>
+        <LinearGraph data={data} width={400} height={300} />
 
         <ChainRuleExample />
         <IntegralGraph />
@@ -40,6 +44,7 @@ function App() {
 
       </header>
 
+      
 
     </div>
 
