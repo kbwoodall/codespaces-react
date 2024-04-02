@@ -1,67 +1,62 @@
-import React, { useState } from 'react';
-import { Line } from 'react-chartjs-2';
+import React from 'react';
+import Plot from 'react-plotly.js';
 
-const DerivativeGraph = () => {
-  const [inputValue, setInputValue] = useState(0); // State to hold input value
+class DerivativeGraph extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      x: [],
+      originalFunction: [],
+      derivativeFunction: []
+    };
+  }
 
-  // Function to calculate the derivative
-  const calculateDerivative = (x) => {
-    // For f(x) = 3x, the derivative is always 3
-    return 3;
-  };
+  componentDidMount() {
+    this.calculateFunctions();
+  }
 
-  // Function to generate data for the derivative graph
-  const generateGraphData = () => {
-    const data = [];
+  calculateFunctions = () => {
+    const xValues = [];
+    const originalFunction = [];
+    const derivativeFunction = [];
+
     for (let x = -10; x <= 10; x += 0.1) {
-      const y = calculateDerivative(x);
-      data.push({ x, y });
+      xValues.push(x);
+      originalFunction.push(Math.pow(x, 4));
+      derivativeFunction.push(4 * Math.pow(x, 3));
     }
-    return data;
+
+    this.setState({ x: xValues, originalFunction, derivativeFunction });
   };
 
-  // Event handler for input change
-  const handleInputChange = (e) => {
-    const value = parseFloat(e.target.value);
-    setInputValue(value);
-  };
+  render() {
+    const { x, originalFunction, derivativeFunction } = this.state;
 
-  // Generate data for the derivative graph
-  const data = {
-    datasets: [{
-      label: 'f\'(x) = 3',
-      data: generateGraphData(),
-      borderColor: 'blue',
-      borderWidth: 2,
-      pointRadius: 0,
-      fill: false
-    }]
-  };
+    const data = [
+      {
+        x: x,
+        y: originalFunction,
+        type: 'scatter',
+        mode: 'lines',
+        name: 'f(x) = x^4'
+      },
+      {
+        x: x,
+        y: derivativeFunction,
+        type: 'scatter',
+        mode: 'lines',
+        name: "f'(x) = 4x^3"
+      }
+    ];
 
-  // Chart options
-  const options = {
-    scales: {
-      xAxes: [{
-        type: 'linear',
-        position: 'bottom'
-      }],
-      yAxes: [{
-        type: 'linear',
-        position: 'left'
-      }]
-    }
-  };
+    const layout = {
+      title: 'Graph of f(x) = x^4 and its derivative',
+      xaxis: { title: 'x' },
+      yaxis: { title: 'f(x)' }
+    };
 
-  return (
-    <div>
-      <h2>Graph of the Derivative Function</h2>
-      <label>
-        Enter value for x:
-        <input type="number" value={inputValue} onChange={handleInputChange} />
-      </label>
-      <Line data={data} options={options} />
-    </div>
-  );
-};
+    return <Plot data={data} layout={layout} />;
+  }
+}
 
 export default DerivativeGraph;
