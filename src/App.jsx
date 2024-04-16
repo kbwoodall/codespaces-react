@@ -3,8 +3,11 @@ import ComponentA from './ComponentA.jsx';
 import ComponentB from './ComponentB.jsx';
 import ChainRuleExample from './ChainRuleExample.jsx';
 import React, { useState } from 'react';
+
 import IntegralGraph from './IntegralGraph';
-import DerivativeGraph from './DerivativeGraph';
+
+//import FunctionGraph from './FunctionGraph';
+
 import LinearGraph from './ LinearGraph';
 
 function CurrentDate() {
@@ -32,7 +35,8 @@ function App() {
         <p className="small">
           Kerry Woodall  <CurrentDate />
         </p>
-        <DerivativeGraph/>
+     
+
         <p>Linear Graph Example</p>
         <LinearGraph data={data} width={400} height={300} />
 
