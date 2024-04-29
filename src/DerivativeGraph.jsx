@@ -1,61 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Plot from 'react-plotly.js';
 
-class DerivativeGraph extends React.Component {
+class DerivativeGraph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      x: [],
-      originalFunction: [],
-      derivativeFunction: []
+      xValues: [], // Array to store x values
+      derivative1: [], // Array to store derivative 1 values
+      derivative2: [] // Array to store derivative 2 values
     };
   }
 
   componentDidMount() {
-    this.calculateFunctions();
+    // Generate x values
+    const xValues = Array.from({ length: 100 }, (_, i) => i / 10);
+    
+    // Calculate derivative 1 values (Example: derivative of sin(x) = cos(x))
+    const derivative1 = xValues.map(x => Math.cos(x));
+    
+    // Calculate derivative 2 values (Example: derivative of cos(x) = -sin(x))
+    const derivative2 = xValues.map(x => -Math.sin(x));
+
+    // Update state with calculated values
+    this.setState({ xValues, derivative1, derivative2 });
   }
 
-  calculateFunctions = () => {
-    const xValues = [];
-    const originalFunction = [];
-    const derivativeFunction = [];
-
-    for (let x = -10; x <= 10; x += 0.1) {
-      xValues.push(x);
-      originalFunction.push(Math.pow(x, 4));
-      derivativeFunction.push(4 * Math.pow(x, 3));
-    }
-
-    this.setState({ x: xValues, originalFunction, derivativeFunction });
-  };
-
   render() {
-    const { x, originalFunction, derivativeFunction } = this.state;
+    const { xValues, derivative1, derivative2 } = this.state;
 
-    const data = [
-      {
-        x: x,
-        y: originalFunction,
-        type: 'scatter',
-        mode: 'lines',
-        name: 'f(x) = x^4'
-      },
-      {
-        x: x,
-        y: derivativeFunction,
-        type: 'scatter',
-        mode: 'lines',
-        name: "f'(x) = 4x^3"
-      }
-    ];
-
-    const layout = {
-      title: 'Graph of f(x) = x^4 and its derivative',
-      xaxis: { title: 'x' },
-      yaxis: { title: 'f(x)' }
-    };
-
-    return <Plot data={data} layout={layout} />;
+    return (
+      <div>
+        <Plot
+          data={[
+            { x: xValues, y: derivative1, type: 'scatter', mode: 'lines', name: 'Derivative 1' },
+            { x: xValues, y: derivative2, type: 'scatter', mode: 'lines', name: 'Derivative 2' }
+          ]}
+          layout={{ title: 'Derivatives Plot', xaxis: { title: 'X' }, yaxis: { title: 'Y' } }}
+        />
+      </div>
+    );
   }
 }
 

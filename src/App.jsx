@@ -4,6 +4,7 @@ import ComponentB from './ComponentB.jsx';
 import ChainRuleExample from './ChainRuleExample.jsx';
 import React, { useState } from 'react';
 import Graph from './Graph';
+import DerivativeGraph from './DerivativeGraph';
 
 import IntegralGraph from './IntegralGraph';
 import LinearGraph from './ LinearGraph';
@@ -33,6 +34,7 @@ function App() {
           Kerry Woodall  <CurrentDate />
         </p>
 
+        <DerivativeGraph/>
         <Graph />
 
       </header>
