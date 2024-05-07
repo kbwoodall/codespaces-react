@@ -7,6 +7,7 @@ import Graph from './Graph';
 import DerivativeGraph from './DerivativeGraph';
 import DateTimeComponent from './DateTimeComponent';
 import TimeComponent   from './TimeComponent';
+import DateDisplay from './DateDisplay';
 
 import IntegralGraph from './IntegralGraph';
 import LinearGraph from './ LinearGraph';
@@ -36,7 +37,8 @@ function App() {
           Kerry Woodall 
         </p>
 
-        <TimeComponent/>
+       
+       <DateDisplay/>
         <DerivativeGraph/>
         <Graph />
 
