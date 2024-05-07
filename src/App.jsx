@@ -5,6 +5,8 @@ import ChainRuleExample from './ChainRuleExample.jsx';
 import React, { useState } from 'react';
 import Graph from './Graph';
 import DerivativeGraph from './DerivativeGraph';
+import DateTimeComponent from './DateTimeComponent';
+import TimeComponent   from './TimeComponent';
 
 import IntegralGraph from './IntegralGraph';
 import LinearGraph from './ LinearGraph';
@@ -31,9 +33,10 @@ function App() {
           GitHub Codespaces <span className="heart">♥️</span> React
         </p>
         <p className="small">
-          Kerry Woodall  <CurrentDate />
+          Kerry Woodall 
         </p>
 
+        <TimeComponent/>
         <DerivativeGraph/>
         <Graph />
 
