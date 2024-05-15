@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Graph from './Graph';
 import DerivativeGraph from './DerivativeGraph';
 import DateTimeComponent from './DateTimeComponent';
-import TimeComponent   from './TimeComponent';
+import TimeComponent from './TimeComponent';
 import DateDisplay from './DateDisplay';
 
 import IntegralGraph from './IntegralGraph';
@@ -34,12 +34,12 @@ function App() {
           GitHub Codespaces <span className="heart">♥️</span> React
         </p>
         <p className="small">
-          Kerry Woodall 
+          Kerry Woodall
         </p>
 
-       
-       <DateDisplay/>
-        <DerivativeGraph/>
+
+        <DateDisplay />
+        <DerivativeGraph />
         <Graph />
 
       </header>
