@@ -1,0 +1,12 @@
+/* src/Widget.css */
+.widget h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .widget-content {
+    font-size: 1em;
+    color: #666;
+  }
+  

@@ -1,57 +1,68 @@
 import React from 'react';
-import Plot from 'react-plotly.js';
+import { Line, Chart } from 'react-chartjs-2';
+
+// Disable animation for better initial rendering
+Chart.defaults.animation = false;
 
 class Graph extends React.Component {
-  render() {
-    const xValues = [];
-    const originalValues = [];
-    const derivativeValues = [];
-    const integralValues = [];
-    
-    // Generating data points for x, original function, derivative, and integral
-    for (let x = -10; x <= 10; x += 0.1) {
-      xValues.push(x);
-      originalValues.push(Math.pow(x, 3));
-      derivativeValues.push(3 * Math.pow(x, 2));
-      integralValues.push(0.25 * Math.pow(x, 4));
+  constructor(props) {
+    super(props);
+
+    // Generate data for the function f(x) = x^3
+    const data = [];
+    for (let x = -5; x <= 5; x += 0.1) {
+      data.push({ x, y: Math.pow(x, 3) });
     }
 
-    const data = [
-      {
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Original Function (x^3)',
-        x: xValues,
-        y: originalValues,
-        line: {color: 'blue'}
-      },
-      {
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Derivative (3x^2)',
-        x: xValues,
-        y: derivativeValues,
-        line: {color: 'red'}
-      },
-      {
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Integral (1/4 x^4)',
-        x: xValues,
-        y: integralValues,
-        line: {color: 'green'}
-      }
-    ];
+    // Find the index where x = 2
+    const xIndex = data.findIndex(point => point.x >= 2);
+    const areaData = data.slice(0, xIndex + 1); // Data points from x = -5 to x = 2
 
+    this.state = {
+      data: {
+        labels: data.map(point => point.x),
+        datasets: [
+          {
+            label: 'f(x) = x^3',
+            data: data.map(point => point.y),
+            fill: false,
+            borderColor: 'rgba(75,192,192,1)',
+          },
+          {
+            label: 'Area under curve',
+            data: areaData.map(point => point.y),
+            fill: true,
+            backgroundColor: 'rgba(75,192,192,0.2)',
+          },
+        ],
+      },
+    };
+  }
+
+  render() {
     return (
-      <Plot
-        data={data}
-        layout={{
-          title: 'Graph of Original Function, Derivative, and Integral',
-          xaxis: {title: 'x'},
-          yaxis: {title: 'y'}
-        }}
-      />
+      <div>
+        <h2>Graph of f(x) = x^3 and Area under curve from x = 0 to x = 2</h2>
+        <Line
+          data={this.state.data}
+          options={{
+            scales: {
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'x',
+                },
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'f(x)',
+                },
+              }],
+            },
+          }}
+        />
+      </div>
     );
   }
 }

@@ -1,50 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import Plot from 'react-plotly.js';
+import React, { useEffect, useRef } from 'react';
+import Plotly from 'plotly.js-dist';
 
 const IntegralGraph = () => {
-  const [xValues, setXValues] = useState([]);
-  const [yValues, setYValues] = useState([]);
+  const plotContainer = useRef(null);
 
   useEffect(() => {
-    const calculateIntegral = () => {
-      const x = [];
-      const y = [];
-      let sum = 0;
-      for (let i = -5; i <= 5; i += 0.1) {
-        const integralValue = Math.sin(i); // Example integral function (you can replace this with your own)
-        sum += integralValue * 0.1; // Riemann sum approximation
-        x.push(i);
-        y.push(sum);
-      }
-      setXValues(x);
-      setYValues(y);
+    // Generate data for the integral graph
+    const xValues = [];
+    const yValues = [];
+    const step = 0.1;
+    for (let x = -10; x <= 10; x += step) {
+      xValues.push(x);
+      yValues.push(Math.sin(x));
+    }
+
+    // Calculate integral using trapezoidal rule
+    let integral = 0;
+    for (let i = 0; i < xValues.length - 1; i++) {
+      integral += (yValues[i] + yValues[i + 1]) * step / 2;
+    }
+
+    // Create data trace
+    const trace = {
+      x: xValues,
+      y: yValues,
+      type: 'scatter',
+      mode: 'lines',
+      name: 'f(x)=sin(x)'
     };
 
-    calculateIntegral();
+    // Create layout
+    const layout = {
+      title: `Integral of sin(x) from -10 to 10 is approximately ${integral.toFixed(2)}`,
+      xaxis: {
+        title: 'x'
+      },
+      yaxis: {
+        title: 'f(x)'
+      }
+    };
+
+    // Plot graph
+    Plotly.newPlot(plotContainer.current, [trace], layout);
+
+    // Cleanup on unmount
+    return () => {
+      Plotly.purge(plotContainer.current);
+    };
   }, []);
 
   return (
-    <div>
-      <Plot
-        data={[
-          {
-            x: xValues,
-            y: yValues,
-            type: 'scatter',
-            mode: 'lines',
-            marker: { color: 'blue' },
-            name: 'Integral Function',
-          },
-        ]}
-        layout={{
-          width: 800,
-          height: 400,
-          title: 'Integral Function Graph',
-          xaxis: { title: 'X' },
-          yaxis: { title: 'Integral Value' },
-        }}
-      />
-    </div>
+    <div ref={plotContainer}></div>
   );
 };
 
