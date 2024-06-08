@@ -15,6 +15,7 @@ import LinearGraph from './ LinearGraph';
 import Dashboard from './components/Dashboard';
 import './App.css';
 
+import BettingScreen from './components/BettingScreen';
 function CurrentDate() {
   const [date, setDate] = useState(new Date());
 
@@ -42,6 +43,7 @@ function App() {
 
 
         <DateDisplay />
+        <BettingScreen/>
 
         <Dashboard />
 
