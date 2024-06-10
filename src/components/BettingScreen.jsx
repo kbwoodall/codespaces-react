@@ -8,18 +8,19 @@ const BettingScreen = () => {
 
     const calculatePayout = () => {
 
-
         const d = dollarAmount.toString();
         const o = odds.toString();
 
-        alert('odds ' + o)
-        alert('amt ' + d)
+        alert('amt ' + d);
+        alert('odds ' + o);
 
-        let totPercent = eval("100/(odds + 100) * 100");
-        alert("+ " + totPercent.toFixed(0));
-        
+        //let totPercent = eval("100/(odds + 100) * 100");
+
+        let tot = eval("o * (d/100)");
+        alert("tot " + tot);
+
         const payout = parseFloat(dollarAmount) * parseFloat(odds);
-        setResult(payout.toFixed(2));
+        setResult(tot.toFixed(2));
     };
 
     return (
