@@ -2,45 +2,31 @@ import { parseDependencies } from 'mathjs';
 import React, { useState } from 'react';
 
 const BettingScreen = () => {
-    const [dollarAmount, setDollarAmount] = useState(0);
-    const [odds, setOdds] = useState(0);
+    const [dollarAmount, setDollarAmount] = useState();
+    const [odds, setOdds] = useState();
     const [result, setResult] = useState(null);
 
     const calculatePayout = () => {
-
-        //const d = dollarAmount.toString();
-        //const o = odds.toString();
 
         const d = dollarAmount;
         const o = odds;
         const tot = 0;
 
-        //alert('amt ' + d);
-        //alert('odds ' + o);
-        
         if (o > 0) {
+            alert('> 0')
             alert('amt ' + d);
             alert('odds ' + o);
-            //tot = (o * (d/100));
-            //alert("tot " + o);
-            alert('> 0')
-            //const payout = parseFloat(dollarAmount) * parseFloat(odds);
-            const payout = parseFloat(d) * parseFloat(o)/100;
-            alert(payout);
+        
+            const payout = parseFloat(d) * parseFloat(o) / 100;
             setResult(payout.toFixed(2));
-            
+
         } else {
             alert('< 0')
             alert('amt ' + d);
             alert('odds ' + o);
-            //tot = (d/o);
-            //alert('odds ' + tot)
-       
-            //const payout = parseFloat(dollarAmount) * parseFloat(odds);
+
             const payout = (parseFloat(d) / parseFloat(o) * -100);
-            alert(payout);
             setResult(payout.toFixed(2));
-            
         }
     };
 
