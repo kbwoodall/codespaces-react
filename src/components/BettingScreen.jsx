@@ -21,13 +21,13 @@ const BettingScreen = () => {
         if (o > 0) {
             alert('amt ' + d);
             alert('odds ' + o);
-            tot = (o * (d/100));
+            //tot = (o * (d/100));
             //alert("tot " + o);
-            alert('here')
+            alert('> 0')
             //const payout = parseFloat(dollarAmount) * parseFloat(odds);
             const payout = parseFloat(d) * parseFloat(o);
             alert(payout);
-            setResult(tot.toFixed(2));
+            setResult(payout.toFixed(2));
             
         } else {
             alert('amt ' + d);
