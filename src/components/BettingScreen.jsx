@@ -15,12 +15,14 @@ const BettingScreen = () => {
         const o = odds;
         const tot = 0;
 
-        alert('amt ' + d);
-        alert('odds ' + o);
+        //alert('amt ' + d);
+        //alert('odds ' + o);
         
         if (o > 0) {
-            tot = eval("o * (d/100)");
-            alert("tot " + tot);
+            alert('amt ' + d);
+            alert('odds ' + o);
+            tot = (o * (d/100));
+            //alert("tot " + o);
             alert('here')
             //const payout = parseFloat(dollarAmount) * parseFloat(odds);
             const payout = parseFloat(d) * parseFloat(o);
@@ -28,6 +30,8 @@ const BettingScreen = () => {
             setResult(tot.toFixed(2));
             
         } else {
+            alert('amt ' + d);
+            alert('odds ' + o);
             tot = eval("(d * 100) / o");
             alert('odds ' + tot)
        
