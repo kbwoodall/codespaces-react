@@ -2,28 +2,41 @@ import { parseDependencies } from 'mathjs';
 import React, { useState } from 'react';
 
 const BettingScreen = () => {
-    const [dollarAmount, setDollarAmount] = useState('');
-    const [odds, setOdds] = useState('');
+    const [dollarAmount, setDollarAmount] = useState(0);
+    const [odds, setOdds] = useState(0);
     const [result, setResult] = useState(null);
 
     const calculatePayout = () => {
 
-        const d = dollarAmount.toString();
-        const o = odds.toString();
+        //const d = dollarAmount.toString();
+        //const o = odds.toString();
+
+        const d = dollarAmount;
+        const o = odds;
+        const tot = 0;
 
         alert('amt ' + d);
         alert('odds ' + o);
-
-        //let totPercent = eval("100/(odds + 100) * 100");
-
-
-        let tot = eval("o * (d/100)");
-        alert("tot " + tot);
-
-        //let tot = eval("100/(o + 100) * 100");
-
-        const payout = parseFloat(dollarAmount) * parseFloat(odds);
-        setResult(tot.toFixed(2));
+        
+        if (o > 0) {
+            tot = eval("o * (d/100)");
+            alert("tot " + tot);
+            alert('here')
+            //const payout = parseFloat(dollarAmount) * parseFloat(odds);
+            const payout = parseFloat(d) * parseFloat(o);
+            alert(payout);
+            setResult(tot.toFixed(2));
+            
+        } else {
+            tot = eval("(d * 100) / o");
+            alert('odds ' + tot)
+       
+            //const payout = parseFloat(dollarAmount) * parseFloat(odds);
+            const payout = parseFloat(d) * parseFloat(o);
+            alert(payout);
+            setResult(tot.toFixed(2));
+            
+        }
     };
 
     return (
