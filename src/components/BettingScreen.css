@@ -1,0 +1,48 @@
+/* src/BettingScreen.css */
+
+.betting-screen {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .rounded-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    width: 200px;
+    font-size: 16px;
+  }
+  
+  .calculate-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .calculate-button:hover {
+    background-color: #218838;
+  }
+  
+  .result {
+    margin-top: 20px;
+  }
+  
+  .result h2 {
+    color: #333;
+  }
+  
