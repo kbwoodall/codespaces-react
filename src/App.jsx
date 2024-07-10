@@ -16,6 +16,8 @@ import Dashboard from './components/Dashboard';
 import './App.css';
 
 import BettingScreen from './components/BettingScreen';
+import GpsMapComponent from './components/GpsMapComponent';
+
 function CurrentDate() {
   const [date, setDate] = useState(new Date());
 
@@ -41,15 +43,9 @@ function App() {
           GitHub Codespaces <span className="heart">♥️</span> React
         </p>
 
-
         <DateDisplay />
-        <BettingScreen/>
 
-        <Dashboard />
-
-        <DerivativeGraph />
-
-        <Graph />
+        <GpsMapComponent />
 
       </header>
 
@@ -61,6 +57,18 @@ function App() {
 export default App;
 
 /*
+
+   
+        <BettingScreen/>
+
+        <Dashboard />
+
+        <DerivativeGraph />
+
+        <Graph />
+        
+
+
     <ChainRuleExample />
         <IntegralGraph />
         <ComponentA />
