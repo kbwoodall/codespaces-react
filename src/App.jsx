@@ -44,8 +44,9 @@ function App() {
         </p>
 
         <DateDisplay />
+        <DerivativeGraph />
 
-        <GpsMapComponent />
+
 
       </header>
 
