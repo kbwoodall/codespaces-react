@@ -14,6 +14,8 @@ import LinearGraph from './ LinearGraph';
 //import Dashboard from './Dashboard.js';
 import Dashboard from './components/Dashboard';
 import './App.css';
+import CocktailDropdown from './components/CocktailDropdown';
+
 
 import BettingScreen from './components/BettingScreen';
 import GpsMapComponent from './components/GpsMapComponent';
@@ -44,9 +46,8 @@ function App() {
         </p>
 
         <DateDisplay />
+        <CocktailDropdown />
         <DerivativeGraph />
-
-
 
       </header>
 
@@ -58,6 +59,15 @@ function App() {
 export default App;
 
 /*
+ return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Cocktail Ingredients</h1>
+        <CocktailDropdown />
+      </header>
+    </div>
+  );
+
 
    
         <BettingScreen/>
