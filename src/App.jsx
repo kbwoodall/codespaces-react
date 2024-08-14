@@ -15,7 +15,7 @@ import LinearGraph from './ LinearGraph';
 import Dashboard from './components/Dashboard';
 import './App.css';
 import CocktailDropdown from './components/CocktailDropdown';
-
+//import FlowerIntegralGraph from './FlowerIntegralGraph';
 
 import BettingScreen from './components/BettingScreen';
 import GpsMapComponent from './components/GpsMapComponent';
@@ -43,7 +43,7 @@ function App() {
         </p>
 
         <DateDisplay />
-       
+      
         <DerivativeGraph />
 
       </header>
