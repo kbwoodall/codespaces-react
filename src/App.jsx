@@ -41,12 +41,9 @@ function App() {
         <p>
           Kerry Woodall
         </p>
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
 
         <DateDisplay />
-        <CocktailDropdown />
+       
         <DerivativeGraph />
 
       </header>
