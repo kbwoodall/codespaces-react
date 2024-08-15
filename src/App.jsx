@@ -9,13 +9,13 @@ import DateTimeComponent from './DateTimeComponent';
 import TimeComponent from './TimeComponent';
 import DateDisplay from './DateDisplay';
 
-import IntegralGraph from './IntegralGraph';
-import LinearGraph from './ LinearGraph';
+import IntegralGraph from './components/IntegralGraph';
+//import LinearGraph from './ LinearGraph';
 //import Dashboard from './Dashboard.js';
 import Dashboard from './components/Dashboard';
 import './App.css';
 import CocktailDropdown from './components/CocktailDropdown';
-//import FlowerIntegralGraph from './components/FlowerIntegralGraph';
+//import IntegralGraph from './components/IntegralGraph';
 
 import BettingScreen from './components/BettingScreen';
 import GpsMapComponent from './components/GpsMapComponent';
@@ -44,7 +44,7 @@ function App() {
 
         <DateDisplay />
         
-      
+        <IntegralGraph/>
         <DerivativeGraph />
 
       </header>
